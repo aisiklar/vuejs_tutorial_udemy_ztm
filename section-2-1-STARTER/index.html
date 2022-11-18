@@ -5,8 +5,18 @@
     <link rel="stylesheet" type="text/css" href="main.css" />
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app" v-cloak> 
+      <p>Hey, this is Vue.</p>
+      <p>{{fullName()}}</p>
+      <hr>
+      <label>first name: </label>
+      <input type="text" v-model="firstName">
 
+      <label>last name:</label>
+      <input type="text" v-model="lastName">
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
     <script src="app.js"></script>
   </body>
 </html>

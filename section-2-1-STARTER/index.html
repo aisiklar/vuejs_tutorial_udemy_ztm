@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>VueJS Course</title>
-    <link rel="stylesheet" type="text/css" href="main.css" />
-  </head>
-  <body>
-    <div id="app" v-cloak> 
-      <p>Hey, this is Vue.</p>
-      <p>{{fullName()}}</p>
-      <hr>
-      <label>first name: </label>
-      <input type="text" v-model="firstName">
 
-      <label>last name:</label>
-      <input type="text" v-model="lastName">
-    </div>
+<head>
+  <title>VueJS Course</title>
+  <link rel="stylesheet" type="text/css" href="main.css" />
+</head>
 
-    <script src="https://unpkg.com/vue@3"></script>
-    <script src="app.js"></script>
-  </body>
+<body>
+  <div id="app" v-cloak>
+    <p>Hey, this is VueJS pal.</p>
+    <p>{{fullName()}}</p>
+    <p><a :href="url" target="_blank">Google</a></p>
+    <p>Age is {{ age }}</p>
+    <hr />
+    <label>first name: </label>
+    <input type="text" v-model="firstName">
+
+    <label>last name:</label>
+    <input type="text" :value="lastName" @input="updateLastName">
+    <button type="button" @click="increment">increment</button>
+    <button type="button" @click="age--">decrement</button>
+
+  </div>
+
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="app.js"></script>
+</body>
+
 </html>

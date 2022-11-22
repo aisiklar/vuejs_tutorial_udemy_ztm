@@ -16,6 +16,9 @@
     <label>first name: </label>
     <input type="text" v-model="firstName">
 
+    <label>Middlename: </label>
+    <input type="text" @keyup.enter="updateMiddleName">
+
     <label>last name:</label>
     <input type="text" :value="lastName" @input="updateLastName">
     <button type="button" @click="increment">increment</button>

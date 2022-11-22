@@ -72,7 +72,7 @@ data() {
 ### passing data and events with functions
 
 * @input="updateLastName" >> passes event implicitly
-* @input="'last name update event triggere', $event"
+* @input="updateLastName('last name update event triggered', $event)"
   in the app.js
   methods () {
     updateLastName(msg, event) {
@@ -81,3 +81,29 @@ data() {
       this.lastName = event.target.value;
     }
   }
+
+### Event modifier
+* in the function "updateLastName()" instead of "event.preventDefault()" an event modifier can bue used.
+* it is as below:
+@input.prevent="updateLastName('last name update event triggered', $event)"
+* https://vuejs.org/guide/essentials/event-handling.html#event-modifiers
+* now you can delete event.preventDefault() in the fnc body.
+
+### keyboard events
+* sample > @keyup.enter='updateMiddleName' in template (upon pressing the key 'enter', updateMiddleName method will be called)
+* keycode:
+  * https://www.toptal.com/developers/keycode/table-of-all-keycodes
+  * https://www.toptal.com/developers/keycode
+  * use the given keycode in case you need to use a "key" where there is no assigned alias (like @keyup.enter)  
+* key modifiers: https://vuejs.org/guide/essentials/event-handling.html#key-modifiers
+  * using the system modifier keys, an ex:
+    * <button type="button" @click.ctrl="age--">decrement</button>
+    * if the button is pressed, the age-- is not executed. However if ctrl+ button clicked, it does.
+
+
+# Composition API
+
+### being reactive
+* reactive() > only takes objects (incl. arrays built-in types like Map and Set)
+* ref() > can take any value type
+* in order to change the state. stateName.value = <new value>

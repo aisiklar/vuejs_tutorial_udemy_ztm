@@ -129,7 +129,9 @@ data() {
 * methods: for storing functions. any (including computing methods but performance issues occur)
 * computed property: for storing  functions that calculate / compute value. Must always return a value (there can be other actions too in the compute function)
 * https://vuejs.org/guide/essentials/computed.html .
-* 
+
+
+
 
 
 

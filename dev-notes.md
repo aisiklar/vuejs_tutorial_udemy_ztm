@@ -99,6 +99,41 @@ data() {
   * using the system modifier keys, an ex:
     * <button type="button" @click.ctrl="age--">decrement</button>
     * if the button is pressed, the age-- is not executed. However if ctrl+ button clicked, it does.
+### v-model modifiers:
+* .number modifier, an ex:
+  * with <input>, you get string values. If you need "number" data structure:
+  * <input type="number" (so that the user has to enter number value, enforced by the browser)
+  * add a modifier: v-model.number="age", so that the input is converted to number
+* .trim moodifier:
+  * trim: removes excessive white space from the value (like String.trim())
+* .lazy modifier:
+  * the updates on the value is delayed until the user stops providing the input and clicks another part
+* an Ex (you can use modifiers together):
+  * v-model.lazy.trim="firstName"...
+
+### computed properties
+* fullname() method is called whenever
+  * name / last name etc. is changed (as it should be)
+  * increment() is called (button clicked)
+  * decrement button clicked (no function here, the age is decremented by @click='age--').
+  * whenever any data property is updated page is re-rendered and any method in the template is called
+  * Therefore giving the fullname is NOT efficient... Unnecessary rendering occurs
+* solution, computed properties:
+  * create a computed: {} metod at the same level with data() and methods
+  * move the fullname() method FROM methods:{} TO computed:{}
+  * in the template, remove paranthesis from fullname()
+    * <p> {{ fullname }} </p> 
+    * vue treats computed property as DATA
+  * vue checks which data is used in the computed property. If any of this is updated the re-rendering occurs, otherwise it does not re-render
+* data() for storing single values, objects, arrays
+* methods: for storing functions. any (including computing methods but performance issues occur)
+* computed property: for storing  functions that calculate / compute value. Must always return a value (there can be other actions too in the compute function)
+* https://vuejs.org/guide/essentials/computed.html 
+
+
+
+
+
 
 
 # Composition API

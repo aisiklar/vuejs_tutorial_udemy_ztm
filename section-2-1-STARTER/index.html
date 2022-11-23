@@ -21,6 +21,8 @@
 
     <label>last name:</label>
     <input type="text" :value="lastName" @input="updateLastName">
+    <label>Age</label>
+    <input type="text" v-model="age" />  
     <button type="button" @click="increment">increment</button>
     <button type="button" @click="age--">decrement</button>
 

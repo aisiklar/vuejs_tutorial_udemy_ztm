@@ -130,14 +130,75 @@ data() {
 * computed property: for storing  functions that calculate / compute value. Must always return a value (there can be other actions too in the compute function)
 * https://vuejs.org/guide/essentials/computed.html .
 
+### watchers property
+* watches your data for changes. When a change occurs, you can run a function for additional logic
+* not used often. Few times in apps. 
+* same level with data() {}, methods:{}, computed:{}
+watch: {
+  <any data or computed data to watch>(newVal, oldVal) {
+    <logic to apply when changes occur>
+  }
+}
+* not necessarily needed to return a value
+* similar to computed props but Computed Props SHOULD NEVER be async and must return a value.
 
 
+### binding classes
+* adding a new css class to the template upon an action (like pressing a button etc) is done with "binding"
+* check starter files section 2-18 (at Lecture 26)
+* ex:
+<div class="circle" ></div>
+add new class:
+<div class="circle" :class="{}"> </div>
 
+  * vue integrates to class atribute without conflict.
+  * in :class{...}, "object" is written where the key is the "class name" and "value" is the condition. If condition is true, the class is added.
+<div class="circle" :class="{purple: isPurple}"> </div>
 
+in CSS:
+.purple {
+background-color: purple;
+}
 
+in data() {
+  return {
+    isPurple: false; //initial value
+  }
+}
 
+in template:
+<label>
+  <input type='checkbox' v-model='isPurple'> make Purple</input> 
+  
+</label>
+* what if more than more classes are to be checked
+  * computed property
+  * ex:
 
+label>
+  <input type='checkbox' v-model='isPurple'> make Purple</input> 
+</label>
+<div class="circle" :class="circle_classes"> </div>
+<select v-model="selectedColor">
+  <option value=""> White </option>
+  <option value="text-black"> Black </option>
+  <option value="text-orange"> orange </option>
+</select>
 
+computed: {
+  circle_classes() {
+  return {purple: this.isPurple}
+  }
+}
+data () {
+  return {
+    isPurple: false,
+    selectedColor: ''
+  }
+}
+in CSS:
+.text-black {..}
+.text-orange {...}
 
 # Composition API
 
